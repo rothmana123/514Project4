@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class AllGameRecord {
-    ArrayList<GameRecord> listOfGameRecords;
+    static ArrayList<GameRecord> listOfGameRecords;
     public static int playerId = 0;
 
     //constructor
@@ -34,7 +34,7 @@ public class AllGameRecord {
     }
 
     //
-    public float average(ArrayList<GameRecord> games){
+    public static float average(ArrayList<GameRecord> games){
         int sum = 0;
         int length = games.size();
         for(GameRecord game : games){
@@ -43,18 +43,19 @@ public class AllGameRecord {
         return (float) sum /length;
     }
 
-    public float playerAverage(int playerId){
+    public static float playerAverage(int playerId){
         ArrayList<GameRecord> gamesByPlayerID = new ArrayList<>();
         for(GameRecord game : listOfGameRecords){
             if(game.playerId == playerId){
                 gamesByPlayerID.add(game);
             }
         }
-        return this.average(gamesByPlayerID);
+        return average(gamesByPlayerID);
     }
 
-    public ArrayList<GameRecord> highGameList(ArrayList<GameRecord> arrayOfGames, int n){
-        Collections.sort(arrayOfGames);
+    public static ArrayList<GameRecord> highGameList(ArrayList<GameRecord> arrayOfGames, int n){
+        //Collections.sort(arrayOfGames);
+        arrayOfGames.sort((game1, game2) -> Integer.compare(game2.score, game1.score));
 
         // Ensures we don't exceed the list size if n is greater than arrayOfGames size
        // n = Math.min(n, arrayOfGames.size());
@@ -62,7 +63,7 @@ public class AllGameRecord {
         //return arrayOfGames;
     }
 
-    public ArrayList<GameRecord> highGameList(int playerId, ArrayList<GameRecord> arrayOfGames, int n){
+    public static ArrayList<GameRecord> highGameListPlayer(int playerId, ArrayList<GameRecord> arrayOfGames, int n){
         ArrayList<GameRecord> gamesByPlayerID = new ArrayList<>();
         for(GameRecord game : arrayOfGames){
             if(game.playerId == playerId){

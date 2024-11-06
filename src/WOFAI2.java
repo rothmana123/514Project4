@@ -56,7 +56,7 @@ public class WOFAI2 extends WheelofFortuneA{
     // and one should accept a list of WheellOfFortunePlayers.
     //constructor allows user to choose the player
     public WOFAI2(AllGameRecord allGameRecords, ArrayList<WOFInterface> WOFPlayers) {
-        System.out.println("This implementation runs a list of Concrete WOF Interface Implementation");
+        System.out.println("This implementation runs a list of Concrete WOF Interface Implementations");
         this.WOFPlayers = WOFPlayers;
         this.phrases = readPhrases();
         resetGame();
@@ -302,6 +302,11 @@ public class WOFAI2 extends WheelofFortuneA{
         for(GameRecord record : allGames.listOfGameRecords) {
             System.out.println("Player ID: " + record.playerId + ", Score: " + record.score);
         }
+        System.out.println("The average of all scores is " + AllGameRecord.average(allGames.listOfGameRecords));
+        System.out.println("The average of all scores for Player 4 is " + AllGameRecord.playerAverage(4));
+        System.out.println("The first 5 high scores are " + AllGameRecord.highGameList(allGames.listOfGameRecords, 5));
+        System.out.println("The 2 highest scores for player 5 are " + AllGameRecord.highGameListPlayer(5, allGames.listOfGameRecords, 2));
+
     }
 }
 

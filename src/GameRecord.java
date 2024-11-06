@@ -10,6 +10,19 @@ public class GameRecord implements Comparable<GameRecord>{
         this.playerId = playerId;
     }
 
+    @Override
+    public int compareTo(GameRecord other) {
+        return Integer.compare(this.score, other.score);
+    }
+
+    @Override
+    public String toString() {
+        return "Player ID: " + playerId + ", Score: " + score;
+    }
+
+}
+
+
 //    public int getPlayerID(boolean newPlayer, int playerId){
 //        if(!(newPlayer)){
 //            return playerId;
@@ -17,10 +30,3 @@ public class GameRecord implements Comparable<GameRecord>{
 //            return AllGameRecord.generateNewPlayerId();
 //        }
 //    }
-
-    @Override
-    public int compareTo(GameRecord other) {
-        return Integer.compare(this.score, other.score);
-    }
-
-}
